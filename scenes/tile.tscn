@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwue6j4brtqmx"]
+[gd_scene load_steps=10 format=3 uid="uid://dwue6j4brtqmx"]
 
 [ext_resource type="Texture2D" uid="uid://cooiro6ucwqd8" path="res://assets/tilesets/Nature.png" id="1_gqo5c"]
-[ext_resource type="PackedScene" uid="uid://dgfuxkw63acud" path="res://scenes/Nature/Tree.tscn" id="2_b44aj"]
+[ext_resource type="PackedScene" uid="uid://dgfuxkw63acud" path="res://scenes/nature/tree-base.tscn" id="2_b44aj"]
+[ext_resource type="PackedScene" uid="uid://douvnbp25l7tp" path="res://scenes/nature/tree-top-with-base.tscn" id="2_jj077"]
 [ext_resource type="PackedScene" uid="uid://e6grcb0xfinf" path="res://scenes/player.tscn" id="2_wxwv1"]
+[ext_resource type="PackedScene" uid="uid://bd2kqdack0256" path="res://scenes/nature/tree-mid.tscn" id="4_3c4j3"]
+[ext_resource type="PackedScene" uid="uid://cl1gdy78wctkw" path="res://scenes/nature/tree-top.tscn" id="4_dtj36"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64aj5"]
 texture = ExtResource("1_gqo5c")
@@ -51,18 +54,50 @@ layer_0/name = "0"
 layer_0/tile_data = PackedInt32Array(65535, 1507328, 0, -1, 1441792, 0, -65536, 1376256, 0, 0, 1441792, 0, 131070, 1376256, 0, 131071, 1572864, 0, 65536, 1572864, 0, 65537, 1376256, 0, 1, 1507328, 0, -65535, 1376256, 0, -131071, 1441792, 0, -131072, 1507328, 0, -65537, 1441792, 0, -65538, 1507328, 0, -2, 1572864, 0, 65534, 1572864, 0, 131074, 1441792, 0, 131073, 1376256, 0, 131072, 1572864, 0, 196607, 1441792, 0, 196606, 1441792, 0, 196605, 1507328, 0, 131069, 1441792, 0, 65533, 1376256, 0, -3, 1376256, 0, -65539, 1441792, 0, -131075, 1507328, 0, -131074, 1441792, 0, -131073, 1572864, 0, -196608, 1507328, 0, -196607, 1441792, 0, -196606, 1572864, 0, -131070, 1507328, 0, -65534, 1507328, 0, 2, 1572864, 0, 65538, 1441792, 0, 196611, 1572864, 0, 196610, 1572864, 0, 196609, 1376256, 0, 196608, 1572864, 0, 262143, 1376256, 0, 262142, 1376256, 0, 262141, 1507328, 0, 262140, 1572864, 0, 196604, 1507328, 0, 131068, 1441792, 0, 65532, 1441792, 0, -4, 1507328, 0, -65540, 1572864, 0, -131076, 1376256, 0, -196612, 1507328, 0, -196611, 1572864, 0, -196610, 1441792, 0, -196609, 1572864, 0, -262144, 1572864, 0, -262143, 1376256, 0, -262142, 1441792, 0, -262141, 1572864, 0, -196605, 1441792, 0, -131069, 1376256, 0, -65533, 1441792, 0, 3, 1441792, 0, 65539, 1572864, 0, 131075, 1441792, 0, 327676, 327680, 2, 327677, 327680, 2, 327678, 327680, 2, 327679, 327680, 2, 262144, 327680, 2, 262145, 327680, 2, 262146, 327680, 2, 262147, 327680, 2, 196612, 393216, 1, 131076, 393216, 1, 65540, 393216, 1, 4, 393216, 1, -65532, 393216, 1, -131068, 393216, 1, -196604, 393216, 1, -262140, 393216, 0, 262148, 393216, 2, -131077, 262144, 1, -65541, 262144, 1, -5, 262144, 1, 65531, 262144, 1, 131067, 262144, 1, 196603, 262144, 1, 262139, 262144, 1, 327675, 262144, 2, -196613, 262144, 0)
 layer_1/name = "1"
 
-[node name="Player" parent="." instance=ExtResource("2_wxwv1")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="Tree" parent="." instance=ExtResource("2_b44aj")]
 position = Vector2(-48, 48)
 
 [node name="Tree2" parent="." instance=ExtResource("2_b44aj")]
+position = Vector2(48, 32)
+
+[node name="Tree 3" parent="." instance=ExtResource("2_jj077")]
 position = Vector2(48, 16)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Tree Mid 3" parent="." instance=ExtResource("4_3c4j3")]
+position = Vector2(48, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="Player" parent="." instance=ExtResource("2_wxwv1")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Tree Top" parent="." instance=ExtResource("4_dtj36")]
+position = Vector2(-48, 32)
+
+[node name="Tree Top2" parent="." instance=ExtResource("4_dtj36")]
+position = Vector2(48, -16)
+
+[node name="Border Bottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border Bottom"]
+position = Vector2(5.72205e-06, 72)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_4tvx8")
+
+[node name="Border Top" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border Top"]
+position = Vector2(0, -72)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_4tvx8")
+
+[node name="Border Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border Left"]
 position = Vector2(-72, 0)
+shape = SubResource("RectangleShape2D_4tvx8")
+
+[node name="Border Right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border Right"]
+position = Vector2(72, 0)
 shape = SubResource("RectangleShape2D_4tvx8")

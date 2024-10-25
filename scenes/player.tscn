@@ -1,11 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://e6grcb0xfinf"]
+[gd_scene load_steps=25 format=3 uid="uid://e6grcb0xfinf"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_2iavb"]
+[ext_resource type="Script" path="res://scripts/overworld/player/player-movement.gd" id="1_2iavb"]
 [ext_resource type="Texture2D" uid="uid://db846iov6nytb" path="res://assets/entities/overworld/player_exploration.png" id="1_u6qbt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asa83"]
 atlas = ExtResource("1_u6qbt")
 region = Rect2(0, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u685d"]
+atlas = ExtResource("1_u6qbt")
+region = Rect2(36, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y67ag"]
+atlas = ExtResource("1_u6qbt")
+region = Rect2(54, 0, 16, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tofq6"]
+atlas = ExtResource("1_u6qbt")
+region = Rect2(18, 0, 16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ta611"]
 atlas = ExtResource("1_u6qbt")
@@ -79,6 +91,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u685d")
+}],
+"loop": false,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y67ag")
+}],
+"loop": false,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tofq6")
+}],
+"loop": false,
+"name": &"idle_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -158,7 +194,7 @@ script = ExtResource("1_2iavb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_il6yn")
-animation = &"walk-up"
+animation = &"walk-right"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
