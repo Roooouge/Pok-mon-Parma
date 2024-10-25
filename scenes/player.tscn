@@ -19,10 +19,6 @@ region = Rect2(54, 0, 16, 22)
 atlas = ExtResource("1_u6qbt")
 region = Rect2(18, 0, 16, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ta611"]
-atlas = ExtResource("1_u6qbt")
-region = Rect2(0, 0, 16, 22)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dbsci"]
 atlas = ExtResource("1_u6qbt")
 region = Rect2(0, 24, 16, 22)
@@ -35,9 +31,9 @@ region = Rect2(0, 48, 16, 22)
 atlas = ExtResource("1_u6qbt")
 region = Rect2(0, 72, 16, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hony"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta611"]
 atlas = ExtResource("1_u6qbt")
-region = Rect2(36, 0, 16, 22)
+region = Rect2(0, 0, 16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ed822"]
 atlas = ExtResource("1_u6qbt")
@@ -51,9 +47,9 @@ region = Rect2(36, 48, 16, 22)
 atlas = ExtResource("1_u6qbt")
 region = Rect2(36, 72, 16, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_71lus"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hony"]
 atlas = ExtResource("1_u6qbt")
-region = Rect2(54, 0, 16, 22)
+region = Rect2(36, 0, 16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xyrlc"]
 atlas = ExtResource("1_u6qbt")
@@ -67,9 +63,9 @@ region = Rect2(54, 48, 16, 22)
 atlas = ExtResource("1_u6qbt")
 region = Rect2(54, 72, 16, 22)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cslxi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_71lus"]
 atlas = ExtResource("1_u6qbt")
-region = Rect2(18, 0, 16, 22)
+region = Rect2(54, 0, 16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oid5q"]
 atlas = ExtResource("1_u6qbt")
@@ -83,15 +79,19 @@ region = Rect2(18, 48, 16, 22)
 atlas = ExtResource("1_u6qbt")
 region = Rect2(18, 72, 16, 22)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cslxi"]
+atlas = ExtResource("1_u6qbt")
+region = Rect2(18, 0, 16, 22)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_il6yn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_asa83")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle_down",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -99,7 +99,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_left",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -107,7 +107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_right",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -115,12 +115,9 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle_up",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ta611")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dbsci")
 }, {
@@ -129,15 +126,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lbriy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta611")
 }],
 "loop": true,
 "name": &"walk-down",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hony")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ed822")
 }, {
@@ -146,15 +143,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jhg41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hony")
 }],
 "loop": true,
 "name": &"walk-left",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_71lus")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xyrlc")
 }, {
@@ -163,15 +160,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a3nts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71lus")
 }],
 "loop": true,
 "name": &"walk-right",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cslxi")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oid5q")
 }, {
@@ -180,6 +177,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f4sk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cslxi")
 }],
 "loop": true,
 "name": &"walk-up",
@@ -187,16 +187,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2q3o"]
-size = Vector2(14, 15)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2iavb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_il6yn")
-animation = &"walk-right"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g2q3o")

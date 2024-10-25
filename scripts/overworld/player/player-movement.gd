@@ -1,78 +1,67 @@
 extends CharacterBody2D
 
-const SPEED = 32.0
-const TICKS = 4
+var walk_speed = 4.0
+const TILE_SIZE = 16
+
+var init_pos = Vector2.ZERO
+var dir = Vector2.ZERO
+var is_moving = false
+var percent_move_to_next_tile = 0.0
 
 @onready var animation = $AnimatedSprite2D
 
+# Called when the node enters the scene for the first time
+func _ready() -> void:
+	init_pos = position
 
+func _physics_process(delta: float) -> void:
+	if !is_moving:
+		process_input()
+		idle_anim()
+	elif dir != Vector2.ZERO:
+		move(delta)
+	else:
+		is_moving = false
+		idle_anim()
 
-var curr_dir = -1
-var curr_hor = 0
-var curr_ver = 0
+func process_input() -> void:
+	if dir.y == 0:
+		dir.x = Input.get_axis("move_left", "move_right")
+	if dir.x == 0:
+		dir.y = Input.get_axis("move_up", "move_down")
+	
+	if dir != Vector2.ZERO:
+		init_pos = position
+		is_moving = true
 
-var tick = 0
+func move(delta: float) -> void:
+	percent_move_to_next_tile += walk_speed * delta
+	if percent_move_to_next_tile >= 1.0:
+		position = init_pos + (TILE_SIZE * dir)
+		percent_move_to_next_tile = 0
+		is_moving = false
+		idle_anim()
+	else:
+		position = init_pos + (TILE_SIZE * dir * percent_move_to_next_tile)
+		walk_anim()
 
-func _physics_process(_delta: float) -> void:
-	var hor = Input.get_axis("move_left", "move_right")
-	var ver = Input.get_axis("move_down", "move_up")
-	
-	if hor == 0 && ver == 0:
-		if curr_dir != -1:
-			move()
-			return
-	
-	if curr_dir == -1:
-		if hor != 0 && ver != 0:
-			return
-			
-		curr_hor = hor
-		curr_ver = ver
-		
-		if ver == -1:
-			curr_dir = 0 #down
-		elif ver == 1:
-			curr_dir = 1 #up
-		elif hor == -1:
-			curr_dir = 2 #left
-		elif hor == 1:
-			curr_dir = 3 #right
-	
-	move()
-	
-func move() -> void:	
-	var anim_name = ""
-	
-	match curr_dir:
-		-1:
-			return
-		0:
-			anim_name = "walk_down"
-			velocity.y = +SPEED
-			velocity.x = 0
-		1:
-			anim_name = "walk_up"
-			velocity.y = -SPEED
-			velocity.x = 0
-		2:
-			anim_name = "walk_left"
-			velocity.x = -SPEED
-			velocity.y = 0
-		3:
-			anim_name = "walk_right"
-			velocity.x = +SPEED
-			velocity.y = 0
-	
-	tick = tick + 1
-	
-	print(tick, " - ", anim_name)
-	animation.play(anim_name)
-	move_and_slide()
-	
-	if tick == TICKS:
-		end_move()
+func walk_anim() -> void:
+	if dir == Vector2(-1,0):
+		animation.play("walk-left")
+	elif dir == Vector2(1,0):
+		animation.play("walk-right")
+	elif dir == Vector2(0,-1):
+		animation.play("walk-up")
+	elif dir == Vector2(0,1):
+		animation.play("walk-down")
 
-func end_move() -> void:
-	
-	tick = 0
-	curr_dir = -1
+func idle_anim() -> void:
+	animation.stop()
+	if dir == Vector2(-1,0):
+		animation.play("idle-left")
+	elif dir == Vector2(1,0):
+		animation.play("idle-right")
+	elif dir == Vector2(0,-1):
+		animation.play("idle-up")
+	elif dir == Vector2(0,1):
+		animation.play("idle-down")
