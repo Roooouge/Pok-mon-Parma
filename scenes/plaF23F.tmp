@@ -132,7 +132,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk-down",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,7 +149,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk-left",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -166,7 +166,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk-right",
-"speed": 6.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -183,7 +183,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk-up",
-"speed": 6.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2q3o"]
@@ -193,17 +193,13 @@ size = Vector2(16, 16)
 script = ExtResource("1_2iavb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 5)
 sprite_frames = SubResource("SpriteFrames_il6yn")
-animation = &"walk-down"
+animation = &"idle-up"
 autoplay = "idle-down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 8)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g2q3o")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(8, 8)
-target_position = Vector2(0, 14)
-
-[node name="Line2D" type="Line2D" parent="RayCast2D"]
+target_position = Vector2(0, 16)

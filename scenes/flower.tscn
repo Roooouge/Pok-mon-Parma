@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://r2bwe7wtutta"]
+
+[ext_resource type="Texture2D" uid="uid://6iarld5i5sjg" path="res://assets/entities/overworld/flower.png" id="1_m3i5a"]
+[ext_resource type="Script" path="res://scripts/overworld/nature/flower.gd" id="2_4du0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kikcg"]
+atlas = ExtResource("1_m3i5a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3timp"]
+atlas = ExtResource("1_m3i5a")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h8fy"]
+atlas = ExtResource("1_m3i5a")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5235a"]
+atlas = ExtResource("1_m3i5a")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5xod"]
+atlas = ExtResource("1_m3i5a")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbn4p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kikcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3timp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h8fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5235a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5xod")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_cbn4p")
+script = ExtResource("2_4du0p")

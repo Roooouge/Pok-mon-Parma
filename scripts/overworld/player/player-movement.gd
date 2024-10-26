@@ -13,15 +13,20 @@ var frame_switcher = 0
 var first_play = false
 
 @onready var animation = $AnimatedSprite2D
+@onready var ray = $RayCast2D
 
 # Called when the node enters the scene for the first time
 func _ready() -> void:
 	init_pos = position
+	ray_line.width = 2
+	ray_line.default_color = Color.RED
 
 func _physics_process(delta: float) -> void:
 	if !is_moving:
 		first_play = true
 		process_input()
+		if is_moving:
+			move(delta)
 	elif dir != Vector2.ZERO:
 		move(delta)
 	else:
@@ -50,6 +55,16 @@ func process_input() -> void:
 			facing = Vector2.ZERO
 
 func move(delta: float) -> void:
+	var desire_step: Vector2 = dir * (TILE_SIZE + 1) / 2
+	ray.target_position = desire_step
+	ray.force_raycast_update()
+	
+	if ray.is_colliding():
+		percent_move_to_next_tile = 0
+		is_moving = false
+		idle_anim(dir)
+		return
+	
 	percent_move_to_next_tile += walk_speed * delta
 	if percent_move_to_next_tile >= 1.0:
 		position = init_pos + (TILE_SIZE * dir)
@@ -100,3 +115,11 @@ func idle_anim(_dir: Vector2) -> void:
 		anim_name = "idle-down"
 	
 	animation.play(anim_name)
+
+##### Utilities #####
+
+@onready var ray_line = $RayCast2D/Line2D
+
+# Add this function at the beginning of _physics_process() to draw the collision detection raycast
+func draw_ray_line() -> void:
+	ray_line.points = [Vector2.ZERO, ray.target_position]
