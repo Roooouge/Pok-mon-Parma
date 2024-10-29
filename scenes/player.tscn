@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://e6grcb0xfinf"]
 
 [ext_resource type="Script" path="res://scripts/overworld/player/player-movement.gd" id="1_2iavb"]
-[ext_resource type="Texture2D" uid="uid://db846iov6nytb" path="res://assets/entities/overworld/player_exploration.png" id="1_u6qbt"]
+[ext_resource type="Texture2D" uid="uid://db846iov6nytb" path="res://assets/entities/overworld/player-exploration.png" id="1_u6qbt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_asa83"]
 atlas = ExtResource("1_u6qbt")

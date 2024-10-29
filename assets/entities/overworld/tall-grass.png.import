@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://db846iov6nytb"
-path="res://.godot/imported/player_exploration.png-5e1791d1f5d2641d14862a142ed8d20e.ctex"
+uid="uid://r61ok6wlbcux"
+path="res://.godot/imported/tall-grass.png-23772ce7aab4eef50974973fc3306a00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/entities/overworld/player_exploration.png"
-dest_files=["res://.godot/imported/player_exploration.png-5e1791d1f5d2641d14862a142ed8d20e.ctex"]
+source_file="res://assets/entities/overworld/tall-grass.png"
+dest_files=["res://.godot/imported/tall-grass.png-23772ce7aab4eef50974973fc3306a00.ctex"]
 
 [params]
 

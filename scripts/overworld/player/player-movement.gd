@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+##### MOVEMENTS
 var walk_speed = 4.0
 const TILE_SIZE = 16
 
@@ -15,7 +16,10 @@ var first_play = false
 @onready var animation = $AnimatedSprite2D
 @onready var ray = $RayCast2D
 
-# Called when the node enters the scene for the first time
+##### SIGNALS
+signal player_moving
+signal player_stopped
+
 func _ready() -> void:
 	init_pos = position
 	ray_line.width = 2
@@ -65,11 +69,15 @@ func move(delta: float) -> void:
 		idle_anim(dir)
 		return
 	
+	if percent_move_to_next_tile == 0:
+		emit_signal("player_moving")
+		
 	percent_move_to_next_tile += walk_speed * delta
 	if percent_move_to_next_tile >= 1.0:
 		position = init_pos + (TILE_SIZE * dir)
 		percent_move_to_next_tile = 0
 		is_moving = false
+		emit_signal("player_stopped")
 		
 		if !still_pressing():
 			idle_anim(dir)
